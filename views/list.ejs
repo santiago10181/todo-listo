@@ -1,0 +1,27 @@
+
+<%- include("header") %>
+<body>
+<div class="box" id="heading">
+    <h1> <%= dia %></h1>
+</div>
+
+<div class="box">
+    <ul>
+    <form action="/delete" method="post">
+    <% nuevaTarea.forEach(task => { %>
+        <div class="item">
+        <input type="checkbox"  name="cuadro" value="<%= task._id %>" onchange="this.form.submit()" >
+        <p> <%=task.nombre%> </p>
+    </div>
+    <% }) %>
+        <input type="hidden" name="elicustom" value="<%= dia %>">
+    </form>
+</ul>
+
+<form action="/" method="post" class="item">
+    <input type="text" name="tarea" placeholder="nueva tarea" autocomplete="off">
+    <button type="submit" value="<%= dia %>" name="boton" value= <%= dia %>>+</button>
+</form>
+
+</div>
+<%- include("footer")  %>
